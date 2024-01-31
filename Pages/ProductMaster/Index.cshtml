@@ -1,0 +1,58 @@
+﻿@page
+@model Joke_App.Pages.ProductMaster.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-page="Create" class="btn btn-primary">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Task[0].ListItems)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Task[0].Price)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Task[0].Qty)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model.Task != null && Model.Task.Any())
+        {
+            @foreach (var item in Model.Task)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ListItems)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Price)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Qty)
+                    </td>
+                    <td>
+                        <a asp-page="./Edit" asp-route-id="@item.ID">Edit</a> |
+                        <a asp-page="./Details" asp-route-id="@item.ID">Details</a> |
+                        <a asp-page="./Delete" asp-route-id="@item.ID">Delete</a>
+                    </td>
+                </tr>
+            }
+        }
+        else{
+        <tr>
+            <td colspan="4" class="text-center">
+                No tasks available
+            </td>
+        </tr>}
+    </tbody>
+</table>
