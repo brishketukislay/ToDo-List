@@ -11,9 +11,9 @@ namespace Joke_App.Models
         [DisplayName("Task")]
         public string ListItems { get; set; }
         [Required]
-        public double Price { get; set; }
+        public int CompleteWithin { get; set; }
         [Required]
-        public int Qty { get; set; }
+        public string Done { get; set; }
 
     }
 }
